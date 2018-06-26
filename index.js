@@ -152,6 +152,13 @@ function OneSignal(apiKey, appId, sandbox) {
    */
   this.createNotification = function(message, title, data, oneSignalIds) {
 
+    var headings = null;
+    if (title != null) {
+      headings = {
+        en: title,
+      }
+    }
+
     var options = {
       method: 'POST',
       url: 'https://onesignal.com/api/v1/notifications',
@@ -166,9 +173,7 @@ function OneSignal(apiKey, appId, sandbox) {
         contents: {
           en: message
         },
-        headings: {
-          en: title
-        },
+        headings: headings,
         data: data
       })
     };
